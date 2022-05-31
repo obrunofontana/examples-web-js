@@ -95,6 +95,8 @@ document.getElementById('addButton')
         fromToUpdate.innerHTML = message.from;
         toToUpdate.innerHTML = message.to;
         messageToUpdate.innerHTML = message.message;
+
+        lineEditingInMoment = null;
       } else {
         tbody.appendChild(tr);
       }
