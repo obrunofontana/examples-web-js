@@ -1,6 +1,9 @@
 let countRow = 0;
+let lineEditingInMoment = null;
 
 function onClickEdit (lineEditing) {
+  lineEditingInMoment = lineEditing;
+
   const [from, to, message] = lineEditing.childNodes;
   document.getElementById('from')
     .value = from.innerHTML;
@@ -9,7 +12,7 @@ function onClickEdit (lineEditing) {
     .value = to.innerHTML;
 
   document.getElementById('message')
-    .innerHTML = message.innerHTML;
+    .value = message.innerHTML;
 }
 
 document.getElementById('addButton')
@@ -41,24 +44,6 @@ document.getElementById('addButton')
 
       document.getElementById('form-message').reset();
 
-      /*const sectionMessages = document.
-        getElementById('section-messages');
-
-      let ul = sectionMessages.querySelector('ul')
-
-      if (!ul) {
-        ul = document.createElement('ul')
-        sectionMessages.appendChild(ul);
-      }
-
-      const li = document.createElement('li')
-      li.innerHTML = `
-        De: ${message.from} 
-        Para: ${message.to}
-        Mensagem: ${message.message}
-      `
-
-      ul.appendChild(li);*/
       const tbody = document
       .getElementById('tbody-messages')
 
@@ -102,7 +87,15 @@ document.getElementById('addButton')
       
       iconEdit.setAttribute('onclick', `onClickEdit(${tdButtons.parentElement.id});`);
       
-      tbody.appendChild(tr);
-
-
+      
+      if (lineEditingInMoment) {
+        const [fromToUpdate, toToUpdate, messageToUpdate] = 
+          lineEditingInMoment.childNodes;
+        
+        fromToUpdate.innerHTML = message.from;
+        toToUpdate.innerHTML = message.to;
+        messageToUpdate.innerHTML = message.message;
+      } else {
+        tbody.appendChild(tr);
+      }
   });
