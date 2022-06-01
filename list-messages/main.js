@@ -1,6 +1,10 @@
 let countRow = 0;
 let lineEditingInMoment = null;
 
+function onClickRemove(lineToRemove) {
+  lineToRemove.remove();
+}
+
 function onClickEdit (lineEditing) {
   lineEditingInMoment = lineEditing;
 
@@ -79,15 +83,14 @@ document.getElementById('addButton')
       tdButtons.appendChild(iconRemove);
       
       tr.appendChild(tdButtons);
-      
-      console.log('....', tdButtons)
-      // Precisamos IDENTIFICAR a linha 
+
+      // Precisamos IDENTIFICAR a linha
       tr.setAttribute('id', `line${countRow}`);
       countRow += 1;
       
       iconEdit.setAttribute('onclick', `onClickEdit(${tdButtons.parentElement.id});`);
-      
-      
+      iconRemove.setAttribute('onclick', `onClickRemove(${tdButtons.parentElement.id});`)
+
       if (lineEditingInMoment) {
         const [fromToUpdate, toToUpdate, messageToUpdate] = 
           lineEditingInMoment.childNodes;
