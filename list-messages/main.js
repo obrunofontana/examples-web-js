@@ -73,14 +73,28 @@ document.getElementById('addButton')
       const iconEdit =
         document.createElement('i')
       iconEdit.setAttribute('class', 'fas fa-edit');
-      iconEdit.setAttribute('style', 'cursor:pointer');
+      iconEdit.setAttribute('title', 'Editar');
+      iconEdit.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
       tdButtons.appendChild(iconEdit)
       
       
       const iconRemove = document.createElement('i');
       iconRemove.setAttribute('class', 'fas fa-trash');
-      iconRemove.setAttribute('style', 'cursor:pointer');
+      iconRemove.setAttribute('title', 'Remover');
+      iconRemove.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
       tdButtons.appendChild(iconRemove);
+
+      const iconArrowDown = document.createElement('i');
+      iconArrowDown.setAttribute('class', 'fas fa-arrow-down');
+      iconArrowDown.setAttribute('title', 'Mover abaixo');
+      iconArrowDown.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
+      tdButtons.appendChild(iconArrowDown);
+
+      const iconArrowUp = document.createElement('i');
+      iconArrowUp.setAttribute('class', 'fas fa-arrow-up');
+      iconArrowUp.setAttribute('title', 'Mover acima');
+      iconArrowUp.setAttribute('style', 'cursor:pointer; margin-inline: 1rem;');
+      tdButtons.appendChild(iconArrowUp);
       
       tr.appendChild(tdButtons);
 
