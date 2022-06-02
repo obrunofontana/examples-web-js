@@ -24,7 +24,7 @@ function moveUp(row) {
   const nodes = document.getElementById('tbody-messages').childNodes;
 
   nodes.forEach((rowItem, index) => {
-    if (rowItem?.id === row.id) {
+    if (rowItem.id === row.id) {
       indexRow = index - 1;
     }
   });
@@ -36,7 +36,7 @@ function moveDown(row) {
   const nodes = document.getElementById('tbody-messages').childNodes;
 
   nodes.forEach((rowItem, index) => {
-    if (rowItem?.id === row.id) {
+    if (rowItem.id === row.id) {
       indexRow = index - 1;
     }
   });
@@ -46,20 +46,26 @@ function moveDown(row) {
 
 function moveLine(direction) {
   const rows = document.getElementById('tbody-messages').rows;
+  
+  console.log('-> rows', rows);
+  console.log('indexRow', indexRow);
+  console.log('rows[indexRow]', rows[indexRow])
   const parent = rows[indexRow].parentNode;
 
   if (direction === 'up') {
-    if (indexRow > 1) {
+    if (indexRow >= 1) {
       parent.insertBefore(rows[indexRow],rows[indexRow - 1]);
 
       indexRow--;
     }
   }
 
-  if (direction === 'down'){
-    if(indexRow < rows.length -1){
-      parent.insertBefore(rows[indexRow + 1],rows[indexRow]);
-      indexRow++;
+  if (direction === 'down') {
+    if(indexRow < rows.length){
+      if (rows[indexRow + 1]) {
+        parent.insertBefore(rows[indexRow + 1],rows[indexRow]);
+        indexRow++;
+      }
     }
   }
 }
