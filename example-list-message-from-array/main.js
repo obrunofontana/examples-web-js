@@ -10,6 +10,7 @@ const addPeople = (event) => {
   
   peoples.push(people);
   
+  // console  
   localStorage.setItem('diferente', JSON.stringify(peoples));
 
   document.querySelector('form').reset();
@@ -18,11 +19,22 @@ const addPeople = (event) => {
 
   const itemsSerialized = JSON.parse(items)
 
-  console.log('ITEMS', itemsSerialized)
   let ul = document.querySelector('ul');
   if (!ul) {
     ul = document.createElement('ul');
   }
+
+  // ul[{}, {}] - length = 2;
+  // itemsSerialized[{}, {}, {}] - length = 3;
+  console.log('node list ul', ul.childNodes);
+  itemsSerialized.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `Nome: ${item.name} Idade: ${item.age}, Altura: ${item.height}`
+    console.log('ITEMS', item)
+    ul.appendChild(li);
+  });
+  
+  document.getElementById('list-section').appendChild(ul);
 }
 
 const botaoDeAdicionar = document.getElementById('btn');
