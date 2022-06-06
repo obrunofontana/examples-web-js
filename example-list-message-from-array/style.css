@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, boyd {
+  height: 100%;
+}
+
+:root {
+  --primary-color: #BB2BFF;
+  --bg-color-primary: #BB2BFF;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Fira Code', monospace;
+}
