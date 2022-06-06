@@ -1,35 +1,31 @@
-const storage = localStorage;
-let names = [];
+let peoples = [];
 
-const add = () => {
-  console.log('add')
-
-  const namesKey = storage.getItem('names');
-  names = namesKey ? JSON.parse(namesKey) : []
-
-  names.push({
+const addPeople = (event) => {
+  event.preventDefault();
+  const people = {
     name: document.getElementById('name').value,
-    lastName: document.getElementById('lastName').value
-  });
-
-  storage.setItem('names', JSON.stringify(names));
-
-  if (names.length) {
-    const ul = document.createElement('ul');
-
-    names.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `${item.name} ${item.lastName}`;
-      ul.appendChild(li);
-    });
-
-    document.getElementById('list-section').appendChild(ul);
+    age: document.getElementById('age').value,
+    height: document.getElementById('height').value,
   }
+  
+  peoples.push(people);
+  
+  localStorage.setItem('diferente', JSON.stringify(peoples));
 
+  document.querySelector('form').reset();
 
+  const items = localStorage.getItem('diferente');
+
+  const itemsSerialized = JSON.parse(items)
+
+  console.log('ITEMS', itemsSerialized)
+  let ul = document.querySelector('ul');
+  if (!ul) {
+    ul = document.createElement('ul');
+  }
 }
 
-document.getElementById('btn').addEventListener('click', add)
-
+const botaoDeAdicionar = document.getElementById('btn');
+botaoDeAdicionar.addEventListener('click', addPeople)
 
 
