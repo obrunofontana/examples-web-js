@@ -20,13 +20,13 @@ const addPeople = (event) => {
   const itemsSerialized = JSON.parse(items)
 
   let ul = document.querySelector('ul');
-  if (!ul) {
-    ul = document.createElement('ul');
+  if (ul) {
+    ul.remove()
   }
-
+  
+  ul = document.createElement('ul');
   // ul[{}, {}] - length = 2;
   // itemsSerialized[{}, {}, {}] - length = 3;
-  console.log('node list ul', ul.childNodes);
   itemsSerialized.forEach((item, index) => {
     const li = document.createElement('li');
     li.innerHTML = `Nome: ${item.name} Idade: ${item.age}, Altura: ${item.height}`
