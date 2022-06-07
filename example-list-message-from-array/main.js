@@ -42,6 +42,8 @@ const addPeople = (event) => {
   localStorage.setItem('listaDePessoas', JSON.stringify(peoples));
 
   document.querySelector('form').reset();
+
+  listPeoples();
 }
 
 
