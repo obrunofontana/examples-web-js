@@ -7,26 +7,30 @@ const addPeople = (event) => {
     age: document.getElementById('age').value,
     height: document.getElementById('height').value,
   }
+  const itemsJaArmazenados = localStorage.getItem('listaDePessoas');
   
+  // If: operador ternário
+  // var teste = true ? entao isso : isso
+  peoples = itemsJaArmazenados ? JSON.parse(itemsJaArmazenados) : [];
+
   peoples.push(people);
   
   // console  
-  localStorage.setItem('diferente', JSON.stringify(peoples));
+  localStorage.setItem('listaDePessoas', JSON.stringify(peoples));
 
   document.querySelector('form').reset();
 
-  const items = localStorage.getItem('diferente');
+  const items = localStorage.getItem('listaDePessoas');
 
   const itemsSerialized = JSON.parse(items)
 
   let ul = document.querySelector('ul');
   if (ul) {
-    ul.remove()
+    ul.remove();
   }
   
   ul = document.createElement('ul');
-  // ul[{}, {}] - length = 2;
-  // itemsSerialized[{}, {}, {}] - length = 3;
+ 
   itemsSerialized.forEach((item, index) => {
     const li = document.createElement('li');
     li.innerHTML = `Nome: ${item.name} Idade: ${item.age}, Altura: ${item.height}`

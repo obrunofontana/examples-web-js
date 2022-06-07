@@ -67,3 +67,8 @@ table, th, td {
   border: 1px solid #ccc;
   padding: 0.5rem;
 }
+
+
+form {
+  display: grid;
+}
