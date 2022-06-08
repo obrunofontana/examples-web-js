@@ -121,7 +121,7 @@ const addPeople = (event) => {
     height: document.getElementById('height').value,
   }
   console.log('after save registry', identificadorQueTaSendoEditado);
-  if (identificadorQueTaSendoEditado) {
+  if (identificadorQueTaSendoEditado || identificadorQueTaSendoEditado === 0) {
     salvarRegistroEditado(people);
     return;
   }
