@@ -24,6 +24,9 @@ const onClickEdit = (element) => {
     }
   });
 
+  document.getElementById('name').value = pessoaEncontrada.name;
+  document.getElementById('age').value = pessoaEncontrada.age;
+  document.getElementById('height').value = pessoaEncontrada.height;
 
   console.log('pessoaEncontrada', pessoaEncontrada);
 }
