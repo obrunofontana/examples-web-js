@@ -1,5 +1,7 @@
 let peoples = [];
 
+let identificadorQueTaSendoEditado = null;
+
 const loadPeoples = () => {
   const itemsJaArmazenados = localStorage.getItem('listaDePessoas');
   return itemsJaArmazenados ? JSON.parse(itemsJaArmazenados) : [];
@@ -8,6 +10,9 @@ const loadPeoples = () => {
 const onClickEdit = (element) => {
   const identificadorASerEncontrado = 
     element.getAttribute('identificador');
+
+  identificadorQueTaSendoEditado = +identificadorASerEncontrado;
+  
   const peoples = loadPeoples();
   console.log('carregar pessoas', peoples);
   let pessoaEncontrada = {
@@ -33,6 +38,25 @@ const onClickEdit = (element) => {
 
 const onClickRemove = (element) => {
   console.log('on click delete', element.getAttribute('identificador'));
+}
+
+const salvarRegistroEditado = (registroSendoEditado) => {
+  const pessoas = loadPeoples();
+  const pessoasAtualizadas = pessoas.map((pessoa, index) => { 
+    if (identificadorQueTaSendoEditado === index) {
+      pessoa.name = registroSendoEditado.name;
+      pessoa.age = registroSendoEditado.age;
+      pessoa.height = registroSendoEditado.height;
+    }
+    return pessoa;
+  })
+
+  localStorage.setItem('listaDePessoas', JSON.stringify(pessoasAtualizadas));
+
+  identificadorQueTaSendoEditado = null;
+
+  listPeoples();
+  document.querySelector('form').reset();
 }
 
 
@@ -90,14 +114,21 @@ listPeoples();
 
 const addPeople = (event) => {
   event.preventDefault();
+
   const people = {
     name: document.getElementById('name').value,
     age: document.getElementById('age').value,
     height: document.getElementById('height').value,
   }
+  console.log('after save registry', identificadorQueTaSendoEditado);
+  if (identificadorQueTaSendoEditado) {
+    salvarRegistroEditado(people);
+    return;
+  }
   
   peoples = loadPeoples();
 
+  console.log('after save registry');
   peoples.push(people);
   
   localStorage.setItem('listaDePessoas', JSON.stringify(peoples));
