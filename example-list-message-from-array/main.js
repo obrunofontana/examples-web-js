@@ -6,11 +6,30 @@ const loadPeoples = () => {
 }
 
 const onClickEdit = (element) => {
-  console.log('on click edit', element);
+  const identificadorASerEncontrado = 
+    element.getAttribute('identificador');
+  const peoples = loadPeoples();
+  console.log('carregar pessoas', peoples);
+  let pessoaEncontrada = {
+    name: '',
+    age: '',
+    height: ''
+  };
+
+  peoples.forEach((pessoa, identificador) => {
+    if (identificador === +identificadorASerEncontrado) {
+      pessoaEncontrada.age = pessoa.age;
+      pessoaEncontrada.name = pessoa.name;
+      pessoaEncontrada.height = pessoa.height;
+    }
+  });
+
+
+  console.log('pessoaEncontrada', pessoaEncontrada);
 }
 
 const onClickRemove = (element) => {
-  console.log('on click delete', element);
+  console.log('on click delete', element.getAttribute('identificador'));
 }
 
 
