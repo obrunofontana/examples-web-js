@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+:root {
+  --primary-color: #367C2B;
+  --bg-color-primary: #367C2B;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  height: 80vh;
+  width: 60rem;
+}
+
+h4 {
+  margin-bottom: 2rem;
+}
+
+/* Input todo */
+#todo {
+  padding: 0.5rem;
+  width: 40rem;
+  height: 3.5rem;
+}
+
+/* Botão adicionar */
+#addToDoButton {
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--bg-color-primary);
+  border-radius: 1rem;
+  color: white;
+  margin-inline: 1rem;
+  margin-top: 0.2rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+li input {
+  margin-right: 1rem;
+}
+
+#sectionList {
+  display: flex;
+  margin-top: 3rem;
+}
+
+.isDone {
+  text-decoration: line-through;
+}
+
+.fa-trash {
+  color: red;
+  margin-left: 1rem;
+  cursor: pointer;
+}
